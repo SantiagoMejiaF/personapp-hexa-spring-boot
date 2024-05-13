@@ -55,7 +55,6 @@ public class ProfessionUseCase implements ProfessionInputPort{
 
     @Override
     public List<Profession> findAll() {
-        log.info("Output: " + professionPersistence.getClass());
         return professionPersistence.find();
     }
 

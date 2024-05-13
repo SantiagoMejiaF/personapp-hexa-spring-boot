@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 import co.edu.javeriana.as.personapp.mongo.document.TelefonoDocument;
 
 @Repository
-public interface TelefonoRepositoryMongo extends MongoRepository<TelefonoDocument, String>{
-    
-}
+public interface TelefonoRepositoryMongo extends MongoRepository<TelefonoDocument, String>{ }

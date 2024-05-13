@@ -139,7 +139,7 @@ public class ProfesionMenu {
             System.out.print("Ingrese el nombre de la profesion: ");
             keyboard.nextLine();
             String name = keyboard.nextLine();
-            System.out.print("Ingrese la descripcion de la persona: ");
+            System.out.print("Ingrese la descripcion: ");
             String description = keyboard.nextLine();
             return new ProfesionModelCli(id, name, description);
         } catch (InputMismatchException e) {

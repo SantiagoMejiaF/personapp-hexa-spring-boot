@@ -23,13 +23,16 @@ import javax.persistence.Table;
 public class TelefonoEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Basic(optional = false)
 	@Column(nullable = false, length = 15)
 	private String num;
+
 	@Basic(optional = false)
 	@Column(nullable = false, length = 45)
 	private String oper;
+
 	@JoinColumn(name = "duenio", referencedColumnName = "cc", nullable = false)
 	@ManyToOne(optional = false)
 	private PersonaEntity duenio;

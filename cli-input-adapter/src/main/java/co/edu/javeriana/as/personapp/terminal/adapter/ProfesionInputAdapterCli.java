@@ -42,7 +42,6 @@ public class ProfesionInputAdapterCli {
     }
 
     public void historial() {
-        log.info("Into historial ProfesionModelCli in Input Adapter");
         professionInputPort.findAll().stream()
                 .map(profesionMapperCli::fromDomainToAdapterCli)
                 .forEach(System.out::println);
