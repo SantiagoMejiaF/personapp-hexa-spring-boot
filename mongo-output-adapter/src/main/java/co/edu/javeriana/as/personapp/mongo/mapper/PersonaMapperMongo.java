@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import co.edu.javeriana.as.personapp.common.annotations.Mapper;
-import co.edu.javeriana.as.personapp.domain.Gender;
+import co.edu.javeriana.as.personapp.domain.enums.GenderEnum;
 import co.edu.javeriana.as.personapp.domain.Person;
 import co.edu.javeriana.as.personapp.domain.Phone;
 import co.edu.javeriana.as.personapp.domain.Study;
@@ -30,15 +30,11 @@ public class PersonaMapperMongo {
 		personaDocument.setId(person.getIdentification());
 		personaDocument.setNombre(person.getFirstName());
 		personaDocument.setApellido(person.getLastName());
-		personaDocument.setGenero(validateGenero(person.getGender()));
+		personaDocument.setGenero(person.getGender());
 		personaDocument.setEdad(validateEdad(person.getAge()));
 		personaDocument.setEstudios(validateEstudios(person.getStudies()));
 		personaDocument.setTelefonos(validateTelefonos(person.getPhoneNumbers()));
 		return personaDocument;
-	}
-
-	private String validateGenero(@NonNull Gender gender) {
-		return gender == Gender.FEMALE ? "F" : gender == Gender.MALE ? "M" : " ";
 	}
 
 	private Integer validateEdad(Integer age) {
@@ -62,15 +58,11 @@ public class PersonaMapperMongo {
 		person.setIdentification(personaDocument.getId());
 		person.setFirstName(personaDocument.getNombre());
 		person.setLastName(personaDocument.getApellido());
-		person.setGender(validateGender(personaDocument.getGenero()));
+		person.setGender(personaDocument.getGenero());
 		person.setAge(validateAge(personaDocument.getEdad()));
 		person.setStudies(validateStudies(personaDocument.getEstudios()));
 		person.setPhoneNumbers(validatePhones(personaDocument.getTelefonos()));
 		return person;
-	}
-
-	private @NonNull Gender validateGender(String genero) {
-		return "F".equals(genero) ? Gender.FEMALE : "M".equals(genero) ? Gender.MALE : Gender.OTHER;
 	}
 
 	private Integer validateAge(Integer edad) {

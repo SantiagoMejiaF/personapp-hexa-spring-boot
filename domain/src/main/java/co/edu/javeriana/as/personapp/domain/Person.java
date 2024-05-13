@@ -2,6 +2,7 @@ package co.edu.javeriana.as.personapp.domain;
 
 import java.util.List;
 
+import co.edu.javeriana.as.personapp.domain.enums.GenderEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,17 +15,25 @@ import lombok.ToString;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Person {
+
 	@NonNull
 	private Integer identification;
+
 	@NonNull
 	private String firstName;
+
 	@NonNull
 	private String lastName;
+
 	@NonNull
-	private Gender gender;
+	private GenderEnum gender;
+
 	private Integer age;
+
 	@ToString.Exclude
+
 	private List<Phone> phoneNumbers;
+
 	@ToString.Exclude
 	private List<Study> studies;
 

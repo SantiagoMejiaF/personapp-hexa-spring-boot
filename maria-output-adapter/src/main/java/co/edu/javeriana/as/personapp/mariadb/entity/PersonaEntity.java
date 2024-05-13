@@ -1,17 +1,11 @@
 package co.edu.javeriana.as.personapp.mariadb.entity;
 
+import co.edu.javeriana.as.personapp.domain.enums.GenderEnum;
+
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 
 /**
  *
@@ -32,18 +26,25 @@ public class PersonaEntity implements Serializable {
 	@Basic(optional = false)
 	@Column(nullable = false)
 	private Integer cc;
+
 	@Basic(optional = false)
 	@Column(nullable = false, length = 45)
 	private String nombre;
+
 	@Basic(optional = false)
 	@Column(nullable = false, length = 45)
 	private String apellido;
+
 	@Basic(optional = false)
 	@Column(nullable = false)
-	private Character genero;
+	@Enumerated(EnumType.STRING)
+	private GenderEnum genero;
+
 	private Integer edad;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "duenio")
 	private List<TelefonoEntity> telefonos;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
 	private List<EstudiosEntity> estudios;
 
@@ -54,7 +55,7 @@ public class PersonaEntity implements Serializable {
 		this.cc = cc;
 	}
 
-	public PersonaEntity(Integer cc, String nombre, String apellido, Character genero) {
+	public PersonaEntity(Integer cc, String nombre, String apellido, GenderEnum genero) {
 		this.cc = cc;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -85,11 +86,11 @@ public class PersonaEntity implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public Character getGenero() {
+	public GenderEnum getGenero() {
 		return genero;
 	}
 
-	public void setGenero(Character genero) {
+	public void setGenero(GenderEnum genero) {
 		this.genero = genero;
 	}
 

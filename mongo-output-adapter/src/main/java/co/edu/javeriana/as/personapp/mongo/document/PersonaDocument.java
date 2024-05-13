@@ -2,6 +2,7 @@ package co.edu.javeriana.as.personapp.mongo.document;
 
 import java.util.List;
 
+import co.edu.javeriana.as.personapp.domain.enums.GenderEnum;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,15 +17,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Document("persona")
 public class PersonaDocument {
+
 	@Id
 	private Integer id;
+
 	private String nombre;
+
 	private String apellido;
-	private String genero;
+
+	private GenderEnum genero;
+
 	private Integer edad;
+
 	@DocumentReference(lazy = true, lookup = "{ 'primaryDuenio' : ?#{#self._id} }")
+
 	@ReadOnlyProperty
 	private List<TelefonoDocument> telefonos;
+
 	@DocumentReference(lazy = true, lookup = "{ 'primaryPersona' : ?#{#self._id} }")
 	@ReadOnlyProperty
 	private List<EstudiosDocument> estudios;

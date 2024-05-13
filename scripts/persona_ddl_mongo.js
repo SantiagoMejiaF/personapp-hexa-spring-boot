@@ -1,4 +1,5 @@
-use admin
+use
+admin
 
 db.createUser({
   user: "persona_db",
